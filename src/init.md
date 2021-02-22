@@ -1,14 +1,26 @@
 # 1. Record architecture decisions
 
-Date: DATE
+| Meta           | Value                                     |
+| -------------- | ----------------------------------------- |
+| Proposed Date: | DATE                                      |
+| Decision Date: | ?                                         |
+| Proposer:      | NAMES                                     |
+| Deciders:      | NAMES                                     |
+| Status:        | drafted                                   |
+| Issues:        | ?                                         |
+| References:    |                                           |
+| Priority:      | high                                      |
 
-## Status
-
-Accepted
+INFO: *Status types:* drafted | proposed | rejected | accepted | deprecated | superseded +
+      *Priority:* low | medium | high
 
 ## Context
 
 We need to record the architectural decisions made on this project.
+
+## Proposed Solution
+
+What is the proposed solution to this context.
 
 ## Decision
 
@@ -16,4 +28,9 @@ We will use Architecture Decision Records, as [described by Michael Nygard](http
 
 ## Consequences
 
-See Michael Nygard's article, linked above. For a lightweight ADR toolset, see Nat Pryce's [adr-tools](https://github.com/npryce/adr-tools).
+See Michael Nygard's article, linked above.
+For a lightweight ADR toolset, see Nat Pryce's [adr-tools](https://github.com/npryce/adr-tools).
+
+## Further Information
+
+## Comments
