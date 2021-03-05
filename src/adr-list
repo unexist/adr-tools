@@ -1,12 +1,12 @@
 #!/bin/bash
 set -e
-eval "$($(dirname $0)/adr-config)"
+eval "$("$(dirname "$0")"/adr-config)"
 
 ## usage: adr list
 ##
 ## Lists the architecture decision records
 
-adr_dir=$("$adr_bin_dir/_adr_dir")
+adr_dir="$("$adr_bin_dir/_adr_dir")"
 
 if [ -d $adr_dir ]
 then

@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-eval "$($(dirname $0)/adr-config)"
+eval "$("$(dirname "$0")"/adr-config)"
 
 ## usage: adr generate [REPORT [OPTION ...]]
 ##
@@ -26,6 +26,8 @@ eval "$($(dirname $0)/adr-config)"
 ##     adr help generate toc
 
 cmd=$1
+echo $adr_bin_dir > log.1
+echo $cmd >> log.1
 
 if [ -z $cmd ]
 then

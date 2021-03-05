@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e
-eval "$($(dirname $0)/adr-config)"
+eval "$("$(dirname "$0")"/adr-config)"
 
 source "$(dirname $0)/_adr_database"
 
@@ -14,31 +14,20 @@ function listByFieldWhereX() {
 
 [cols="3,1,1,1,1", options="header"]
 |===
-|Name
-|Proposed Date
-|Decision Date
-|Status
-|Priority
+|Name|Proposed Date|Decision Date|Status|Priority
+$(selectFromDatabase "SELECT '|<<' || title || '>>', proposed, decision, status, priority || char(13) FROM adr WHERE ${2}")
+|===
 
 EOF
-
-  echo $(selectFromDatabase "SELECT '|' || title, proposed, decision, status, priority FROM adr WHERE ${2}")
-
-  echo "|==="
-  echo
 }
 
-
 function includeAllADRs() {
+  cat <<EOF
+== ADR List
 
-  for (( i=0; i < ${#ADR_LIST[@]}; i+=6 ))
-  do
-    local fileref="${ADR_LIST[$i+5]}"
-    fileref="${fileref:31}"
-    echo "include::${fileref}[]"
-    echo " "
-  done
+$(selectFromDatabase "SELECT 'include::decisions/' || link || '[leveloffset=2]' || char(13) || char(13) FROM adr")
 
+EOF
 }
 
 #################
@@ -77,14 +66,9 @@ listByFieldWhereX "List of all ADR with high priority" "priority = 'high'"
 # All
 listByFieldWhereX "List of all ADR" "status = status"
 
-
-echo  "== ADR List"
-
-echo  ":leveloffset: +2"
-
-#includeAllADRs
+includeAllADRs
 
 # Use last-update-label of generated index
 cat <<EOF
-  Last update: $(date -u +'%Y-%m-%d %H:%M')
+Last update: $(date -u +'%Y-%m-%d %H:%M')
 EOF
